@@ -6,7 +6,7 @@
       <div class="sb-brand">
         <div class="sb-brand-icon">🔧</div>
         <div>
-          <div class="sb-brand-name">Plumber Ledger</div>
+          <div class="sb-brand-name">Shree Renuka</div>
           <div class="sb-brand-sub">SBT Management</div>
         </div>
       </div>
@@ -71,7 +71,7 @@
         <div class="topbar">
           <div>
             <div class="topbar-title">Dashboard</div>
-            <div class="topbar-sub">Samruddh Bharat Technologies</div>
+            <div class="topbar-sub">Shree Renuka Ladger</div>
           </div>
           <button class="btn-add" @click="openAddModal">
             <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1v11M1 6.5h11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
