@@ -4,61 +4,37 @@
     <!-- ══ SIDEBAR ══ -->
     <aside class="sidebar">
       <div class="sb-brand">
-        <div class="sb-brand-icon">🔧</div>
+        <img src="../public/favicon.avif" class="sb-brand-icon" alt="logo">
         <div>
           <div class="sb-brand-name">Shree Renuka</div>
           <div class="sb-brand-sub">SBT Management</div>
         </div>
       </div>
-
       <nav class="sb-nav">
         <div class="sb-item" :class="{ 'sb-active': activeTab === 'dashboard' }" @click="activeTab = 'dashboard'">
-          <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
-            <rect x="1" y="1" width="5.5" height="5.5" rx="1" fill="currentColor"/>
-            <rect x="8.5" y="1" width="5.5" height="5.5" rx="1" fill="currentColor"/>
-            <rect x="1" y="8.5" width="5.5" height="5.5" rx="1" fill="currentColor"/>
-            <rect x="8.5" y="8.5" width="5.5" height="5.5" rx="1" fill="currentColor"/>
-          </svg>
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><rect x="1" y="1" width="5.5" height="5.5" rx="1" fill="currentColor"/><rect x="8.5" y="1" width="5.5" height="5.5" rx="1" fill="currentColor"/><rect x="1" y="8.5" width="5.5" height="5.5" rx="1" fill="currentColor"/><rect x="8.5" y="8.5" width="5.5" height="5.5" rx="1" fill="currentColor"/></svg>
           Dashboard
         </div>
         <div class="sb-item" :class="{ 'sb-active': activeTab === 'customers' }" @click="activeTab = 'customers'">
-          <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
-            <circle cx="7.5" cy="5" r="3" stroke="currentColor" stroke-width="1.3"/>
-            <path d="M2 13c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-          </svg>
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="5" r="3" stroke="currentColor" stroke-width="1.3"/><path d="M2 13c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
           Customers
         </div>
         <div class="sb-item" :class="{ 'sb-active': activeTab === 'payments' }" @click="activeTab = 'payments'">
-          <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
-            <rect x="1.5" y="3.5" width="12" height="8.5" rx="1.5" stroke="currentColor" stroke-width="1.3"/>
-            <path d="M1.5 6.5h12" stroke="currentColor" stroke-width="1.3"/>
-          </svg>
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><rect x="1.5" y="3.5" width="12" height="8.5" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M1.5 6.5h12" stroke="currentColor" stroke-width="1.3"/></svg>
           Payments
         </div>
         <div class="sb-item" :class="{ 'sb-active': activeTab === 'reports' }" @click="activeTab = 'reports'">
-          <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
-            <path d="M2 12V4l5-2.5L12 4v8l-5 2.5L2 12Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
-          </svg>
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2 12V4l5-2.5L12 4v8l-5 2.5L2 12Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
           Reports
         </div>
       </nav>
-
       <div class="sb-bottom">
         <div class="sb-section-label">Summary</div>
         <div class="sb-stat-card">
-          <div class="sb-st-row">
-            <span class="sb-st-label">Total Bills</span>
-            <span class="sb-st-val" style="color:#F87171">₹{{ fmt(allDebit) }}</span>
-          </div>
-          <div class="sb-st-row">
-            <span class="sb-st-label">Collected</span>
-            <span class="sb-st-val" style="color:#4ADE80">₹{{ fmt(allCredit) }}</span>
-          </div>
+          <div class="sb-st-row"><span class="sb-st-label">Total Bills</span><span class="sb-st-val" style="color:#F87171">₹{{ fmt(allDebit) }}</span></div>
+          <div class="sb-st-row"><span class="sb-st-label">Collected</span><span class="sb-st-val" style="color:#4ADE80">₹{{ fmt(allCredit) }}</span></div>
           <div class="sb-divider"></div>
-          <div class="sb-st-row">
-            <span class="sb-st-label">Pending</span>
-            <span class="sb-st-val" style="color:#FBBF24">₹{{ fmt(allBalance) }}</span>
-          </div>
+          <div class="sb-st-row"><span class="sb-st-label">Pending</span><span class="sb-st-val" style="color:#FBBF24">₹{{ fmt(allBalance) }}</span></div>
         </div>
       </div>
     </aside>
@@ -69,48 +45,30 @@
       <!-- ─── DASHBOARD TAB ─────────────────────────────── -->
       <template v-if="activeTab === 'dashboard'">
         <div class="topbar">
-          <div>
-            <div class="topbar-title">Dashboard</div>
-            <div class="topbar-sub">Shree Renuka Ladger</div>
-          </div>
+          <div><div class="topbar-title">Dashboard</div><div class="topbar-sub">Shree Renuka Ladger</div></div>
           <button class="btn-add" @click="openAddModal">
             <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1v11M1 6.5h11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             Add Customer
           </button>
         </div>
-
         <div class="chips">
           <div class="chip">
-            <div class="chip-top">
-              <div><div class="chip-num" style="color:#2563EB">{{ customers.length }}</div><div class="chip-lbl">Total Customers</div></div>
-              <div class="chip-icon" style="background:#EFF6FF">👥</div>
-            </div>
+            <div class="chip-top"><div><div class="chip-num" style="color:#2563EB">{{ uniqueCustomers.length }}</div><div class="chip-lbl">Total Customers</div></div><div class="chip-icon" style="background:#EFF6FF">👥</div></div>
             <div class="chip-note" style="color:#2563EB">{{ allPending }} accounts pending</div>
           </div>
           <div class="chip">
-            <div class="chip-top">
-              <div><div class="chip-num" style="color:#DC2626">₹{{ fmt(allDebit) }}</div><div class="chip-lbl">Total Billed</div></div>
-              <div class="chip-icon" style="background:#FEF2F2">📤</div>
-            </div>
+            <div class="chip-top"><div><div class="chip-num" style="color:#DC2626">₹{{ fmt(allDebit) }}</div><div class="chip-lbl">Total Billed</div></div><div class="chip-icon" style="background:#FEF2F2">📤</div></div>
             <div class="chip-note" style="color:#DC2626">Total debit</div>
           </div>
           <div class="chip">
-            <div class="chip-top">
-              <div><div class="chip-num" style="color:#16A34A">₹{{ fmt(allCredit) }}</div><div class="chip-lbl">Collected</div></div>
-              <div class="chip-icon" style="background:#F0FDF4">✅</div>
-            </div>
+            <div class="chip-top"><div><div class="chip-num" style="color:#16A34A">₹{{ fmt(allCredit) }}</div><div class="chip-lbl">Collected</div></div><div class="chip-icon" style="background:#F0FDF4">✅</div></div>
             <div class="chip-note" style="color:#16A34A">Amount received</div>
           </div>
           <div class="chip">
-            <div class="chip-top">
-              <div><div class="chip-num" style="color:#D97706">₹{{ fmt(allBalance) }}</div><div class="chip-lbl">Outstanding</div></div>
-              <div class="chip-icon" style="background:#FFFBEB">⏳</div>
-            </div>
+            <div class="chip-top"><div><div class="chip-num" style="color:#D97706">₹{{ fmt(allBalance) }}</div><div class="chip-lbl">Outstanding</div></div><div class="chip-icon" style="background:#FFFBEB">⏳</div></div>
             <div class="chip-note" style="color:#D97706">{{ allPending }} accounts due</div>
           </div>
         </div>
-
-        <!-- Recent customers table on dashboard -->
         <div class="tbl-card" style="margin-top:16px">
           <div class="tbl-header">
             <span class="tbl-title">Recent Customers</span>
@@ -118,16 +76,13 @@
           </div>
           <div class="tbl-wrap">
             <table class="tbl">
-              <thead><tr>
-                <th>#</th><th>Customer</th><th>Mobile</th><th>Date</th>
-                <th class="ra">Balance ₹</th><th>Status</th>
-              </tr></thead>
+              <thead><tr><th>#</th><th>Customer</th><th>Mobile</th><th>Transactions</th><th class="ra">Balance ₹</th><th>Status</th></tr></thead>
               <tbody>
-                <tr v-for="(c, i) in customers.slice(0, 8)" :key="c.id">
+                <tr v-for="(c, i) in uniqueCustomers.slice(0, 8)" :key="c.mobile || c.name" @click="openViewModal(c)" style="cursor:pointer">
                   <td class="td-sl">{{ i + 1 }}</td>
                   <td><div class="name-cell"><div class="av" :style="{ background: avColor(c.name) }">{{ initials(c.name) }}</div><span class="name-txt">{{ c.name }}</span></div></td>
                   <td class="td-dim">{{ c.mobile || '—' }}</td>
-                  <td class="td-dim">{{ fmtDate(c.date) }}</td>
+                  <td><span class="txn-badge">{{ c.transactions.length }} txn{{ c.transactions.length !== 1 ? 's' : '' }}</span></td>
                   <td class="ra"><span class="bal-pill" :class="c.totalBalance > 0 ? 'bp-red' : 'bp-grn'">{{ fmt(c.totalBalance) }}</span></td>
                   <td><span class="status-badge" :class="c.totalBalance <= 0 ? 'sb-ok' : 'sb-due'">{{ c.totalBalance <= 0 ? 'Cleared' : 'Pending' }}</span></td>
                 </tr>
@@ -140,25 +95,16 @@
       <!-- ─── CUSTOMERS TAB ─────────────────────────────── -->
       <template v-if="activeTab === 'customers'">
         <div class="topbar">
-          <div>
-            <div class="topbar-title">Customers</div>
-            <div class="topbar-sub">All customer records</div>
-          </div>
+          <div><div class="topbar-title">Customers</div><div class="topbar-sub">All customer records</div></div>
           <button class="btn-add" @click="openAddModal">
             <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1v11M1 6.5h11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             Add Customer
           </button>
         </div>
-
         <div class="filter-bar">
           <div class="search-box">
             <svg class="search-ico" width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.5"/><path d="M10 10l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            <input class="search-inp" type="text" placeholder="Search by name…" v-model="filterName" />
-          </div>
-          <div class="date-group">
-            <input class="date-inp" type="date" v-model="filterFrom" />
-            <span class="date-arr">→</span>
-            <input class="date-inp" type="date" v-model="filterTo" />
+            <input class="search-inp" type="text" placeholder="Search by name or mobile…" v-model="filterName" />
           </div>
           <select class="f-select" v-model="filterBalance">
             <option value="">All Status</option>
@@ -169,7 +115,7 @@
         </div>
 
         <div v-if="isLoading" class="state-center"><div class="loader-ring"></div><p>Loading…</p></div>
-        <div v-else-if="filteredCustomers.length === 0" class="state-center">
+        <div v-else-if="filteredUniqueCustomers.length === 0" class="state-center">
           <div style="font-size:40px">📋</div>
           <p style="font-size:16px;font-weight:600;color:#374151">No records found</p>
           <p style="font-size:13px;color:#9CA3AF">Try adjusting filters</p>
@@ -177,33 +123,36 @@
         <div v-else class="tbl-card">
           <div class="tbl-header">
             <span class="tbl-title">All Records</span>
-            <span class="tbl-badge">{{ filteredCustomers.length }} customers</span>
+            <span class="tbl-badge">{{ filteredUniqueCustomers.length }} customers</span>
           </div>
           <div class="tbl-wrap">
             <table class="tbl">
               <thead><tr>
-                <th style="width:40px">#</th><th>Customer</th><th>Alt. Name</th>
-                <th>Mobile</th><th>Date</th>
-                <th class="ra">Debit ₹</th><th class="ra">Credit ₹</th>
-                <th class="ra">Balance ₹</th><th>Status</th><th>Actions</th>
+                <th style="width:40px">#</th><th>Customer</th><th>Mobile</th>
+                <th>Transactions</th><th class="ra">Total Billed ₹</th>
+                <th class="ra">Total Paid ₹</th><th class="ra">Balance ₹</th><th>Status</th><th>Actions</th>
               </tr></thead>
               <tbody>
-                <tr v-for="(c, i) in filteredCustomers" :key="c.id" :class="{ 'tr-cleared': c.totalBalance <= 0 }">
+                <tr v-for="(c, i) in filteredUniqueCustomers" :key="c.mobile || c.name" :class="{ 'tr-cleared': c.totalBalance <= 0 }">
                   <td class="td-sl">{{ i + 1 }}</td>
-                  <td><div class="name-cell"><div class="av" :style="{ background: avColor(c.name) }">{{ initials(c.name) }}</div><span class="name-txt">{{ c.name }}</span></div></td>
-                  <td class="td-dim">{{ c.alternateName || '—' }}</td>
+                  <td><div class="name-cell"><div class="av" :style="{ background: avColor(c.name) }">{{ initials(c.name) }}</div><div><span class="name-txt">{{ c.name }}</span><div class="td-dim" style="font-size:11px">{{ c.alternateName || '' }}</div></div></div></td>
                   <td class="td-dim">{{ c.mobile || '—' }}</td>
-                  <td class="td-dim">{{ fmtDate(c.date) }}</td>
-                  <td class="ra td-red td-mono">{{ c.debit ? fmt(c.debit) : '—' }}</td>
-                  <td class="ra td-grn td-mono">{{ c.credit ? fmt(c.credit) : '—' }}</td>
+                  <td><span class="txn-badge">{{ c.transactions.length }} txn{{ c.transactions.length !== 1 ? 's' : '' }}</span></td>
+                  <td class="ra td-red td-mono">{{ fmt(c.totalDebit) }}</td>
+                  <td class="ra td-grn td-mono">{{ fmt(c.totalCredit) }}</td>
                   <td class="ra"><span class="bal-pill" :class="c.totalBalance > 0 ? 'bp-red' : 'bp-grn'">{{ fmt(c.totalBalance) }}</span></td>
                   <td><span class="status-badge" :class="c.totalBalance <= 0 ? 'sb-ok' : 'sb-due'">{{ c.totalBalance <= 0 ? 'Cleared' : 'Pending' }}</span></td>
                   <td>
                     <div class="acts">
-                      <button class="ab ab-v" @click="openViewModal(c)" title="View"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="4" stroke="currentColor" stroke-width="1.4"/><circle cx="6.5" cy="6.5" r="1.5" fill="currentColor"/></svg></button>
-                      <button class="ab ab-p" @click="openPaymentModal(c)" title="Payment"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="1.5" y="3" width="10" height="7.5" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M1.5 6h10" stroke="currentColor" stroke-width="1.3"/></svg></button>
-                      <button class="ab ab-e" @click="openEditModal(c)" title="Edit"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M8.5 2L11 4.5L5 10.5H2.5V8L8.5 2Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg></button>
-                      <button class="ab ab-d" @click="confirmDelete(c)" title="Delete"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 4h9M5 4V2.5h3V4M5.5 5.5v4M7.5 5.5v4M3 4l.5 6.5h6L10 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                      <button class="ab ab-v" @click="openViewModal(c)" title="View Transactions">
+                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="4" stroke="currentColor" stroke-width="1.4"/><circle cx="6.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
+                      </button>
+                      <button class="ab ab-p" @click="openPaymentModal(c)" title="Add Transaction">
+                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="1.5" y="3" width="10" height="7.5" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M1.5 6h10" stroke="currentColor" stroke-width="1.3"/></svg>
+                      </button>
+                      <button class="ab ab-d" @click="confirmDelete(c)" title="Delete All Records">
+                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 4h9M5 4V2.5h3V4M5.5 5.5v4M7.5 5.5v4M3 4l.5 6.5h6L10 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </button>
                     </div>
                   </td>
                 </tr>
@@ -216,95 +165,54 @@
       <!-- ─── PAYMENTS TAB ──────────────────────────────── -->
       <template v-if="activeTab === 'payments'">
         <div class="topbar">
-          <div>
-            <div class="topbar-title">Payments</div>
-            <div class="topbar-sub">All payment records & outstanding dues</div>
-          </div>
+          <div><div class="topbar-title">Payments</div><div class="topbar-sub">All payment records & outstanding dues</div></div>
         </div>
-
         <div class="chips">
-          <div class="chip">
-            <div class="chip-top">
-              <div><div class="chip-num" style="color:#16A34A">₹{{ fmt(allCredit) }}</div><div class="chip-lbl">Total Collected</div></div>
-              <div class="chip-icon" style="background:#F0FDF4">💰</div>
-            </div>
-            <div class="chip-note" style="color:#16A34A">Across all accounts</div>
-          </div>
-          <div class="chip">
-            <div class="chip-top">
-              <div><div class="chip-num" style="color:#D97706">₹{{ fmt(allBalance) }}</div><div class="chip-lbl">Outstanding</div></div>
-              <div class="chip-icon" style="background:#FFFBEB">⏳</div>
-            </div>
-            <div class="chip-note" style="color:#D97706">Still to collect</div>
-          </div>
-          <div class="chip">
-            <div class="chip-top">
-              <div><div class="chip-num" style="color:#DC2626">{{ allPending }}</div><div class="chip-lbl">Pending Accounts</div></div>
-              <div class="chip-icon" style="background:#FEF2F2">🔴</div>
-            </div>
-            <div class="chip-note" style="color:#DC2626">Need follow-up</div>
-          </div>
-          <div class="chip">
-            <div class="chip-top">
-              <div><div class="chip-num" style="color:#16A34A">{{ customers.length - allPending }}</div><div class="chip-lbl">Cleared Accounts</div></div>
-              <div class="chip-icon" style="background:#F0FDF4">✅</div>
-            </div>
-            <div class="chip-note" style="color:#16A34A">Fully paid</div>
-          </div>
+          <div class="chip"><div class="chip-top"><div><div class="chip-num" style="color:#16A34A">₹{{ fmt(allCredit) }}</div><div class="chip-lbl">Total Collected</div></div><div class="chip-icon" style="background:#F0FDF4">💰</div></div><div class="chip-note" style="color:#16A34A">Across all accounts</div></div>
+          <div class="chip"><div class="chip-top"><div><div class="chip-num" style="color:#D97706">₹{{ fmt(allBalance) }}</div><div class="chip-lbl">Outstanding</div></div><div class="chip-icon" style="background:#FFFBEB">⏳</div></div><div class="chip-note" style="color:#D97706">Still to collect</div></div>
+          <div class="chip"><div class="chip-top"><div><div class="chip-num" style="color:#DC2626">{{ allPending }}</div><div class="chip-lbl">Pending Accounts</div></div><div class="chip-icon" style="background:#FEF2F2">🔴</div></div><div class="chip-note" style="color:#DC2626">Need follow-up</div></div>
+          <div class="chip"><div class="chip-top"><div><div class="chip-num" style="color:#16A34A">{{ uniqueCustomers.length - allPending }}</div><div class="chip-lbl">Cleared Accounts</div></div><div class="chip-icon" style="background:#F0FDF4">✅</div></div><div class="chip-note" style="color:#16A34A">Fully paid</div></div>
         </div>
-
-        <!-- Pending dues table -->
         <div class="tbl-card" style="margin-top:16px">
           <div class="tbl-header">
             <span class="tbl-title">⏳ Pending Dues</span>
             <span class="tbl-badge" style="background:#FEF2F2;color:#DC2626">{{ pendingCustomers.length }} accounts</span>
           </div>
-          <div v-if="pendingCustomers.length === 0" class="state-center" style="padding:40px">
-            <p style="color:#16A34A;font-weight:600">🎉 All accounts are cleared!</p>
-          </div>
+          <div v-if="pendingCustomers.length === 0" class="state-center" style="padding:40px"><p style="color:#16A34A;font-weight:600">🎉 All accounts are cleared!</p></div>
           <div v-else class="tbl-wrap">
             <table class="tbl">
-              <thead><tr>
-                <th>#</th><th>Customer</th><th>Mobile</th>
-                <th class="ra">Total Bill ₹</th><th class="ra">Paid ₹</th><th class="ra">Due ₹</th><th>Action</th>
-              </tr></thead>
+              <thead><tr><th>#</th><th>Customer</th><th>Mobile</th><th>Txns</th><th class="ra">Total Bill ₹</th><th class="ra">Paid ₹</th><th class="ra">Due ₹</th><th>Action</th></tr></thead>
               <tbody>
-                <tr v-for="(c, i) in pendingCustomers" :key="c.id">
+                <tr v-for="(c, i) in pendingCustomers" :key="c.mobile || c.name">
                   <td class="td-sl">{{ i + 1 }}</td>
                   <td><div class="name-cell"><div class="av" :style="{ background: avColor(c.name) }">{{ initials(c.name) }}</div><span class="name-txt">{{ c.name }}</span></div></td>
                   <td class="td-dim">{{ c.mobile || '—' }}</td>
-                  <td class="ra td-mono td-red">{{ fmt(c.debit) }}</td>
-                  <td class="ra td-mono td-grn">{{ fmt(c.credit) }}</td>
+                  <td><span class="txn-badge">{{ c.transactions.length }}</span></td>
+                  <td class="ra td-mono td-red">{{ fmt(c.totalDebit) }}</td>
+                  <td class="ra td-mono td-grn">{{ fmt(c.totalCredit) }}</td>
                   <td class="ra"><span class="bal-pill bp-red">{{ fmt(c.totalBalance) }}</span></td>
-                  <td><button class="btn-pay-now" @click="openPaymentModal(c)">+ Payment</button></td>
+                  <td><button class="btn-pay-now" @click="openPaymentModal(c)">+ Transaction</button></td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
-
-        <!-- Cleared accounts table -->
         <div class="tbl-card" style="margin-top:16px">
           <div class="tbl-header">
             <span class="tbl-title">✅ Cleared Accounts</span>
             <span class="tbl-badge" style="background:#F0FDF4;color:#16A34A">{{ clearedCustomers.length }} accounts</span>
           </div>
-          <div v-if="clearedCustomers.length === 0" class="state-center" style="padding:40px">
-            <p style="color:#9CA3AF">No cleared accounts yet</p>
-          </div>
+          <div v-if="clearedCustomers.length === 0" class="state-center" style="padding:40px"><p style="color:#9CA3AF">No cleared accounts yet</p></div>
           <div v-else class="tbl-wrap">
             <table class="tbl">
-              <thead><tr>
-                <th>#</th><th>Customer</th><th>Mobile</th>
-                <th class="ra">Total Bill ₹</th><th class="ra">Paid ₹</th><th>Status</th>
-              </tr></thead>
+              <thead><tr><th>#</th><th>Customer</th><th>Mobile</th><th class="ra">Total Bill ₹</th><th class="ra">Paid ₹</th><th>Status</th></tr></thead>
               <tbody>
-                <tr v-for="(c, i) in clearedCustomers" :key="c.id" class="tr-cleared">
+                <tr v-for="(c, i) in clearedCustomers" :key="c.mobile || c.name" class="tr-cleared">
                   <td class="td-sl">{{ i + 1 }}</td>
                   <td><div class="name-cell"><div class="av" :style="{ background: avColor(c.name) }">{{ initials(c.name) }}</div><span class="name-txt">{{ c.name }}</span></div></td>
                   <td class="td-dim">{{ c.mobile || '—' }}</td>
-                  <td class="ra td-mono">{{ fmt(c.debit) }}</td>
-                  <td class="ra td-mono td-grn">{{ fmt(c.credit) }}</td>
+                  <td class="ra td-mono">{{ fmt(c.totalDebit) }}</td>
+                  <td class="ra td-mono td-grn">{{ fmt(c.totalCredit) }}</td>
                   <td><span class="status-badge sb-ok">Cleared</span></td>
                 </tr>
               </tbody>
@@ -315,48 +223,15 @@
 
       <!-- ─── REPORTS TAB ───────────────────────────────── -->
       <template v-if="activeTab === 'reports'">
-        <div class="topbar">
-          <div>
-            <div class="topbar-title">Reports</div>
-            <div class="topbar-sub">Account summary & analytics</div>
-          </div>
-        </div>
-
-        <!-- Summary cards -->
+        <div class="topbar"><div><div class="topbar-title">Reports</div><div class="topbar-sub">Account summary & analytics</div></div></div>
         <div class="report-grid">
-          <div class="report-card rc-blue">
-            <div class="rc-icon">👥</div>
-            <div class="rc-val">{{ customers.length }}</div>
-            <div class="rc-lbl">Total Customers</div>
-          </div>
-          <div class="report-card rc-red">
-            <div class="rc-icon">📤</div>
-            <div class="rc-val">₹{{ fmt(allDebit) }}</div>
-            <div class="rc-lbl">Total Billed</div>
-          </div>
-          <div class="report-card rc-green">
-            <div class="rc-icon">📥</div>
-            <div class="rc-val">₹{{ fmt(allCredit) }}</div>
-            <div class="rc-lbl">Total Collected</div>
-          </div>
-          <div class="report-card rc-amber">
-            <div class="rc-icon">⚖️</div>
-            <div class="rc-val">₹{{ fmt(allBalance) }}</div>
-            <div class="rc-lbl">Net Outstanding</div>
-          </div>
-          <div class="report-card rc-purple">
-            <div class="rc-icon">🔴</div>
-            <div class="rc-val">{{ allPending }}</div>
-            <div class="rc-lbl">Pending Accounts</div>
-          </div>
-          <div class="report-card rc-teal">
-            <div class="rc-icon">✅</div>
-            <div class="rc-val">{{ customers.length - allPending }}</div>
-            <div class="rc-lbl">Cleared Accounts</div>
-          </div>
+          <div class="report-card rc-blue"><div class="rc-icon">👥</div><div class="rc-val">{{ uniqueCustomers.length }}</div><div class="rc-lbl">Total Customers</div></div>
+          <div class="report-card rc-red"><div class="rc-icon">📤</div><div class="rc-val">₹{{ fmt(allDebit) }}</div><div class="rc-lbl">Total Billed</div></div>
+          <div class="report-card rc-green"><div class="rc-icon">📥</div><div class="rc-val">₹{{ fmt(allCredit) }}</div><div class="rc-lbl">Total Collected</div></div>
+          <div class="report-card rc-amber"><div class="rc-icon">⚖️</div><div class="rc-val">₹{{ fmt(allBalance) }}</div><div class="rc-lbl">Net Outstanding</div></div>
+          <div class="report-card rc-purple"><div class="rc-icon">🔴</div><div class="rc-val">{{ allPending }}</div><div class="rc-lbl">Pending Accounts</div></div>
+          <div class="report-card rc-teal"><div class="rc-icon">✅</div><div class="rc-val">{{ uniqueCustomers.length - allPending }}</div><div class="rc-lbl">Cleared Accounts</div></div>
         </div>
-
-        <!-- Collection % bar -->
         <div class="tbl-card" style="margin-top:16px">
           <div class="tbl-header"><span class="tbl-title">Collection Progress</span></div>
           <div style="padding:20px 20px 24px">
@@ -364,40 +239,26 @@
               <span>Collected: <strong style="color:#16A34A">₹{{ fmt(allCredit) }}</strong></span>
               <span>Total: <strong>₹{{ fmt(allDebit) }}</strong></span>
             </div>
-            <div class="progress-track">
-              <div class="progress-fill" :style="{ width: collectionPct + '%' }"></div>
-            </div>
-            <div style="text-align:center;margin-top:8px;font-size:13px;color:#6B7280">
-              <strong style="color:#16A34A;font-size:16px">{{ collectionPct }}%</strong> collected
-            </div>
+            <div class="progress-track"><div class="progress-fill" :style="{ width: collectionPct + '%' }"></div></div>
+            <div style="text-align:center;margin-top:8px;font-size:13px;color:#6B7280"><strong style="color:#16A34A;font-size:16px">{{ collectionPct }}%</strong> collected</div>
           </div>
         </div>
-
-        <!-- Top dues table -->
         <div class="tbl-card" style="margin-top:16px">
-          <div class="tbl-header">
-            <span class="tbl-title">Top Outstanding Dues</span>
-            <span class="tbl-badge">Sorted by amount</span>
-          </div>
+          <div class="tbl-header"><span class="tbl-title">Top Outstanding Dues</span><span class="tbl-badge">Sorted by amount</span></div>
           <div class="tbl-wrap">
             <table class="tbl">
-              <thead><tr>
-                <th>#</th><th>Customer</th><th>Alt. Name</th><th>Mobile</th>
-                <th class="ra">Total Bill ₹</th><th class="ra">Paid ₹</th><th class="ra">Balance ₹</th>
-              </tr></thead>
+              <thead><tr><th>#</th><th>Customer</th><th>Mobile</th><th>Txns</th><th class="ra">Total Bill ₹</th><th class="ra">Paid ₹</th><th class="ra">Balance ₹</th></tr></thead>
               <tbody>
-                <tr v-for="(c, i) in topDues" :key="c.id">
+                <tr v-for="(c, i) in topDues" :key="c.mobile || c.name">
                   <td class="td-sl">{{ i + 1 }}</td>
                   <td><div class="name-cell"><div class="av" :style="{ background: avColor(c.name) }">{{ initials(c.name) }}</div><span class="name-txt">{{ c.name }}</span></div></td>
-                  <td class="td-dim">{{ c.alternateName || '—' }}</td>
                   <td class="td-dim">{{ c.mobile || '—' }}</td>
-                  <td class="ra td-mono td-red">{{ fmt(c.debit) }}</td>
-                  <td class="ra td-mono td-grn">{{ fmt(c.credit) }}</td>
+                  <td><span class="txn-badge">{{ c.transactions.length }}</span></td>
+                  <td class="ra td-mono td-red">{{ fmt(c.totalDebit) }}</td>
+                  <td class="ra td-mono td-grn">{{ fmt(c.totalCredit) }}</td>
                   <td class="ra"><span class="bal-pill bp-red">{{ fmt(c.totalBalance) }}</span></td>
                 </tr>
-                <tr v-if="topDues.length === 0">
-                  <td colspan="7" style="text-align:center;padding:24px;color:#9CA3AF">No pending dues 🎉</td>
-                </tr>
+                <tr v-if="topDues.length === 0"><td colspan="7" style="text-align:center;padding:24px;color:#9CA3AF">No pending dues 🎉</td></tr>
               </tbody>
             </table>
           </div>
@@ -406,95 +267,244 @@
 
     </div><!-- /main -->
 
-    <!-- ══ ADD / EDIT MODAL ══ -->
+    <!-- ══════════════════════════════════════════════════
+         ADD / NEW TRANSACTION MODAL  (smart duplicate check)
+    ══════════════════════════════════════════════════ -->
     <Teleport to="body">
     <div v-if="showFormModal" class="ov" @click.self="closeFormModal">
       <div class="modal modal-lg">
-        <div class="mdl-hd" :class="editMode ? 'mhd-amber' : 'mhd-blue'">
-          <div class="mhd-left"><div class="mhd-ico">{{ editMode ? '✏️' : '➕' }}</div><h2>{{ editMode ? 'Edit Customer' : 'New Customer' }}</h2></div>
+        <div class="mdl-hd" :class="addMode === 'new_txn' ? 'mhd-amber' : 'mhd-blue'">
+          <div class="mhd-left">
+            <div class="mhd-ico">{{ addMode === 'new_txn' ? '📋' : '➕' }}</div>
+            <div>
+              <h2>{{ addMode === 'new_txn' ? 'New Transaction' : 'Add Customer' }}</h2>
+              <p v-if="addMode === 'new_txn'" style="font-size:12px;color:#92400E;margin-top:2px">Adding to existing customer: <strong>{{ matchedCustomer?.name }}</strong></p>
+            </div>
+          </div>
           <button class="mdl-close" @click="closeFormModal">✕</button>
         </div>
+
+        <!-- ── STEP 1: Search / Identity ── -->
         <div class="mdl-body">
-          <div class="fsec-title">Personal Details</div>
-          <div class="fgrid">
-            <div class="fg col2"><label>Full Name <sup class="req">*</sup></label><input class="fi" v-model="form.name" placeholder="Customer full name" @input="form.name = form.name.toUpperCase()" /></div>
-            <div class="fg"><label>Alt. Name / Relation</label><input class="fi" v-model="form.alternateName" placeholder="e.g. Husain / Plumber" /></div>
-            <div class="fg"><label>Mobile <sup class="req">*</sup></label><input class="fi" v-model="form.mobile" type="tel" placeholder="Primary mobile" /></div>
-            <div class="fg col2"><label>Address</label><input class="fi" v-model="form.address" placeholder="Full address" /></div>
-            <div class="fg"><label>Alt. Mobile</label><input class="fi" v-model="form.altMobile" type="tel" /></div>
-            <div class="fg"><label>Date</label><input class="fi" v-model="form.date" type="date" /></div>
+
+          <!-- Search box with live duplicate detection -->
+          <div v-if="addMode !== 'new_txn'" class="dup-search-wrap">
+            <div class="dup-search-label">Search existing customer first</div>
+            <div class="dup-search-row">
+              <div class="search-box" style="flex:1">
+                <svg class="search-ico" width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.5"/><path d="M10 10l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <input
+                  ref="dupSearchRef"
+                  class="search-inp"
+                  type="text"
+                  placeholder="Type name or mobile number…"
+                  v-model="dupSearchQuery"
+                  @input="onDupSearch"
+                  autocomplete="off"
+                />
+              </div>
+            </div>
+
+            <!-- Dropdown results -->
+            <div v-if="dupResults.length > 0" class="dup-dropdown">
+              <div class="dup-dropdown-label">{{ dupResults.length }} existing customer{{ dupResults.length > 1 ? 's' : '' }} found — select to add transaction</div>
+              <div
+                v-for="r in dupResults"
+                :key="r.mobile || r.name"
+                class="dup-result-item"
+                @click="selectExistingCustomer(r)"
+              >
+                <div class="av" :style="{ background: avColor(r.name) }">{{ initials(r.name) }}</div>
+                <div class="dup-result-info">
+                  <strong>{{ r.name }}</strong>
+                  <span>{{ r.mobile || 'No mobile' }} · {{ r.transactions.length }} transaction{{ r.transactions.length !== 1 ? 's' : '' }}</span>
+                </div>
+                <div style="text-align:right;flex-shrink:0">
+                  <div class="bal-pill" :class="r.totalBalance > 0 ? 'bp-red' : 'bp-grn'" style="font-size:12px">₹{{ fmt(r.totalBalance) }}</div>
+                  <div style="font-size:10px;color:#9CA3AF;margin-top:3px">{{ r.totalBalance > 0 ? 'Pending' : 'Cleared' }}</div>
+                </div>
+              </div>
+              <div class="dup-or-new" @click="dupSearchQuery = ''; dupResults = []; addMode = 'new'">
+                <svg width="12" height="12" viewBox="0 0 13 13" fill="none"><path d="M6.5 1v11M1 6.5h11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                Not in the list? Add as new customer
+              </div>
+            </div>
+
+            <!-- No results hint -->
+            <div v-if="dupSearchQuery.length >= 2 && dupResults.length === 0 && !dupSearching" class="dup-no-result">
+              No existing customer found for "<strong>{{ dupSearchQuery }}</strong>" —
+              <span class="dup-new-link" @click="prefillFormFromSearch">fill as new customer ↓</span>
+            </div>
           </div>
-          <div class="fsec-title mt20">Billing Details</div>
-          <div class="fgrid">
-            <div class="fg"><label>Bill No.</label><input class="fi" v-model="form.billNo" placeholder="Bill number" /></div>
-            <div class="fg"><label>Book No.</label><input class="fi" v-model="form.bookNo" placeholder="Book number" /></div>
-            <div class="fg col2"><label>Description</label><input class="fi" v-model="form.description" placeholder="Work description" /></div>
-            <div class="fg"><label>Total Bill (₹) <sup class="req">*</sup></label><input class="fi fi-mono" v-model.number="form.debit" type="number" placeholder="0" /></div>
-            <div class="fg"><label>Paid Amount (₹)</label><input class="fi fi-mono" v-model.number="form.credit" type="number" placeholder="0" /></div>
+
+          <!-- If new_txn mode: show existing transactions summary -->
+          <div v-if="addMode === 'new_txn' && matchedCustomer" class="existing-txn-summary">
+            <div class="ets-header">
+              <span>Transaction History</span>
+              <span class="txn-badge">{{ matchedCustomer.transactions.length }} txn{{ matchedCustomer.transactions.length !== 1 ? 's' : '' }}</span>
+            </div>
+            <div class="ets-table-wrap">
+              <table class="tbl" style="font-size:12px">
+                <thead><tr><th>#</th><th>Date</th><th>Description</th><th>Bill No.</th><th class="ra">Debit ₹</th><th class="ra">Credit ₹</th><th class="ra">Balance ₹</th></tr></thead>
+                <tbody>
+                  <tr v-for="(t, i) in matchedCustomer.transactions" :key="t.id">
+                    <td class="td-sl">{{ i + 1 }}</td>
+                    <td class="td-dim">{{ fmtDate(t.date) }}</td>
+                    <td class="td-dim">{{ t.description || '—' }}</td>
+                    <td class="td-dim">{{ t.billNo || '—' }}</td>
+                    <td class="ra td-red td-mono">{{ t.debit ? fmt(t.debit) : '—' }}</td>
+                    <td class="ra td-grn td-mono">{{ t.credit ? fmt(t.credit) : '—' }}</td>
+                    <td class="ra"><span class="bal-pill" :class="((t.debit||0)-(t.credit||0)) > 0 ? 'bp-red' : 'bp-grn'" style="font-size:11px">{{ fmt((t.debit||0)-(t.credit||0)) }}</span></td>
+                  </tr>
+                  <!-- Running total row -->
+                  <tr style="background:#F8FAFC;font-weight:700">
+                    <td colspan="4" style="padding:10px 14px;font-size:12px;color:#374151">Running Total</td>
+                    <td class="ra td-red td-mono" style="padding:10px 14px">{{ fmt(matchedCustomer.totalDebit) }}</td>
+                    <td class="ra td-grn td-mono" style="padding:10px 14px">{{ fmt(matchedCustomer.totalCredit) }}</td>
+                    <td class="ra" style="padding:10px 14px"><span class="bal-pill" :class="matchedCustomer.totalBalance > 0 ? 'bp-red' : 'bp-grn'">{{ fmt(matchedCustomer.totalBalance) }}</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
-          <div class="bal-preview">
-            <div class="bp-row"><span>Total Bill</span><span class="fi-mono">₹{{ fmt(form.debit || 0) }}</span></div>
-            <div class="bp-row"><span>Amount Paid</span><span class="fi-mono" style="color:#16A34A">− ₹{{ fmt(form.credit || 0) }}</span></div>
-            <div class="bp-sep"></div>
-            <div class="bp-row bp-total"><span>Remaining Balance</span><span class="fi-mono" :style="{ color: ((form.debit||0)-(form.credit||0)) > 0 ? '#DC2626' : '#16A34A' }">₹{{ fmt((form.debit || 0) - (form.credit || 0)) }}</span></div>
+
+          <!-- ── New customer fields (only in 'new' mode) ── -->
+          <div v-if="addMode === 'new'">
+            <div class="fsec-title" style="margin-top:16px">Personal Details</div>
+            <div class="fgrid">
+              <div class="fg col2"><label>Full Name <sup class="req">*</sup></label><input class="fi" v-model="form.name" placeholder="Customer full name" @input="form.name = form.name.toUpperCase()" /></div>
+              <div class="fg"><label>Alt. Name / Relation</label><input class="fi" v-model="form.alternateName" placeholder="e.g. Husain / Plumber" /></div>
+              <div class="fg"><label>Mobile <sup class="req">*</sup></label><input class="fi" v-model="form.mobile" type="tel" placeholder="Primary mobile" @input="onMobileInput" /></div>
+              <div class="fg col2"><label>Address</label><input class="fi" v-model="form.address" placeholder="Full address" /></div>
+              <div class="fg"><label>Alt. Mobile</label><input class="fi" v-model="form.altMobile" type="tel" /></div>
+            </div>
           </div>
-          <p v-if="formError" class="errmsg">⚠ {{ formError }}</p>
-        </div>
+
+          <!-- ── Transaction fields (both modes) ── -->
+          <div v-if="addMode === 'new' || addMode === 'new_txn'">
+            <div class="fsec-title" style="margin-top:20px">{{ addMode === 'new_txn' ? '➕ New Transaction Details' : 'Billing Details' }}</div>
+            <div class="fgrid">
+              <div class="fg"><label>Date</label><input class="fi" v-model="form.date" type="date" /></div>
+              <div class="fg"><label>Bill No.</label><input class="fi" v-model="form.billNo" placeholder="Bill number" /></div>
+              <div class="fg"><label>Book No.</label><input class="fi" v-model="form.bookNo" placeholder="Book number" /></div>
+              <div class="fg col2"><label>Description</label><input class="fi" v-model="form.description" placeholder="Work description" /></div>
+              <div class="fg"><label>Total Bill (₹) <sup class="req">*</sup></label><input class="fi fi-mono" v-model.number="form.debit" type="number" placeholder="0" /></div>
+              <div class="fg"><label>Paid Amount (₹)</label><input class="fi fi-mono" v-model.number="form.credit" type="number" placeholder="0" /></div>
+            </div>
+            <div class="bal-preview">
+              <div v-if="addMode === 'new_txn' && matchedCustomer" style="margin-bottom:10px;padding-bottom:10px;border-bottom:1px dashed #E4E7EC">
+                <div class="bp-row"><span style="color:#9CA3AF">Previous Balance</span><span class="fi-mono" :style="{ color: matchedCustomer.totalBalance > 0 ? '#DC2626' : '#16A34A' }">₹{{ fmt(matchedCustomer.totalBalance) }}</span></div>
+              </div>
+              <div class="bp-row"><span>This Transaction Bill</span><span class="fi-mono">₹{{ fmt(form.debit || 0) }}</span></div>
+              <div class="bp-row"><span>Amount Paid Now</span><span class="fi-mono" style="color:#16A34A">− ₹{{ fmt(form.credit || 0) }}</span></div>
+              <div class="bp-sep"></div>
+              <div class="bp-row bp-total">
+                <span>New Running Balance</span>
+                <span class="fi-mono" :style="{ color: newRunningBalance > 0 ? '#DC2626' : '#16A34A' }">₹{{ fmt(newRunningBalance) }}</span>
+              </div>
+            </div>
+            <p v-if="formError" class="errmsg">⚠ {{ formError }}</p>
+          </div>
+
+        </div><!-- /mdl-body -->
+
         <div class="mdl-ft">
           <button class="btn-cancel" @click="closeFormModal">Cancel</button>
-          <button class="btn-ok" :class="editMode ? 'bok-amber' : 'bok-blue'" :disabled="isSubmitting" @click="submitForm">
-            <span v-if="isSubmitting" class="spn"></span><span v-else>{{ editMode ? 'Save Changes' : 'Add Customer' }}</span>
+          <button
+            v-if="addMode === 'new' || addMode === 'new_txn'"
+            class="btn-ok"
+            :class="addMode === 'new_txn' ? 'bok-amber' : 'bok-blue'"
+            :disabled="isSubmitting"
+            @click="submitForm"
+          >
+            <span v-if="isSubmitting" class="spn"></span>
+            <span v-else>{{ addMode === 'new_txn' ? 'Add Transaction' : 'Add Customer' }}</span>
           </button>
         </div>
       </div>
     </div>
     </Teleport>
 
-    <!-- ══ VIEW MODAL ══ -->
+    <!-- ══ VIEW MODAL (with full transaction history) ══ -->
     <Teleport to="body">
     <div v-if="showViewModal" class="ov" @click.self="showViewModal = false">
-      <div class="modal modal-md">
+      <div class="modal modal-lg">
         <div class="mdl-hd mhd-teal">
-          <div class="mhd-left"><div class="mhd-ico">🔍</div><h2>Customer Details</h2></div>
+          <div class="mhd-left"><div class="mhd-ico">🔍</div><h2>Customer Ledger</h2></div>
           <button class="mdl-close" @click="showViewModal = false">✕</button>
         </div>
         <div class="mdl-body" v-if="selectedCustomer">
+          <!-- Customer header -->
           <div class="v-hero">
             <div class="v-av" :style="{ background: avColor(selectedCustomer.name) }">{{ initials(selectedCustomer.name) }}</div>
-            <div class="v-hero-text"><p class="v-name">{{ selectedCustomer.name }}</p><p class="v-rel">{{ selectedCustomer.alternateName || 'No relation noted' }}</p></div>
+            <div class="v-hero-text">
+              <p class="v-name">{{ selectedCustomer.name }}</p>
+              <p class="v-rel">{{ selectedCustomer.alternateName || 'No relation noted' }} · {{ selectedCustomer.mobile || 'No mobile' }}</p>
+            </div>
             <span class="status-badge ml-auto" :class="selectedCustomer.totalBalance <= 0 ? 'sb-ok' : 'sb-due'">{{ selectedCustomer.totalBalance <= 0 ? 'Cleared' : 'Pending' }}</span>
           </div>
-          <div class="v-grid">
-            <div class="v-row"><span>Mobile</span><strong>{{ selectedCustomer.mobile || '—' }}</strong></div>
-            <div class="v-row"><span>Alt. Mobile</span><strong>{{ selectedCustomer.altMobile || '—' }}</strong></div>
-            <div class="v-row v-full"><span>Address</span><strong>{{ selectedCustomer.address || '—' }}</strong></div>
-            <div class="v-row"><span>Date</span><strong>{{ fmtDate(selectedCustomer.date) }}</strong></div>
-            <div class="v-row"><span>Bill No.</span><strong>{{ selectedCustomer.billNo || '—' }}</strong></div>
-            <div class="v-row"><span>Book No.</span><strong>{{ selectedCustomer.bookNo || '—' }}</strong></div>
-            <div class="v-row v-full"><span>Description</span><strong>{{ selectedCustomer.description || '—' }}</strong></div>
-          </div>
+
+          <!-- Bill strip -->
           <div class="bill-strip">
-            <div class="bs-col"><div class="bs-label">Total Bill</div><div class="bs-val" style="color:#DC2626">₹{{ fmt(selectedCustomer.debit || 0) }}</div></div>
+            <div class="bs-col"><div class="bs-label">Total Billed</div><div class="bs-val" style="color:#DC2626">₹{{ fmt(selectedCustomer.totalDebit) }}</div></div>
             <div class="bs-op">−</div>
-            <div class="bs-col"><div class="bs-label">Paid</div><div class="bs-val" style="color:#16A34A">₹{{ fmt(selectedCustomer.credit || 0) }}</div></div>
+            <div class="bs-col"><div class="bs-label">Total Paid</div><div class="bs-val" style="color:#16A34A">₹{{ fmt(selectedCustomer.totalCredit) }}</div></div>
             <div class="bs-op">=</div>
             <div class="bs-col"><div class="bs-label">Balance</div><div class="bs-val bs-big" :style="{ color: selectedCustomer.totalBalance > 0 ? '#DC2626' : '#16A34A' }">₹{{ fmt(selectedCustomer.totalBalance) }}</div></div>
           </div>
+
+          <!-- All transactions table -->
+          <div style="margin-top:18px">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+              <span style="font-size:13px;font-weight:600;color:#111827">All Transactions</span>
+              <span class="txn-badge">{{ selectedCustomer.transactions.length }} transactions</span>
+            </div>
+            <div class="tbl-wrap" style="border:1px solid #F3F4F6;border-radius:10px;overflow:hidden">
+              <table class="tbl" style="font-size:12.5px">
+                <thead><tr>
+                  <th>#</th><th>Date</th><th>Description</th><th>Bill No.</th><th>Book No.</th>
+                  <th class="ra">Debit ₹</th><th class="ra">Credit ₹</th><th class="ra">Balance ₹</th>
+                </tr></thead>
+                <tbody>
+                  <tr v-for="(t, i) in selectedCustomer.transactions" :key="t.id">
+                    <td class="td-sl">{{ i + 1 }}</td>
+                    <td class="td-dim">{{ fmtDate(t.date) }}</td>
+                    <td>{{ t.description || '—' }}</td>
+                    <td class="td-dim">{{ t.billNo || '—' }}</td>
+                    <td class="td-dim">{{ t.bookNo || '—' }}</td>
+                    <td class="ra td-red td-mono">{{ t.debit ? fmt(t.debit) : '—' }}</td>
+                    <td class="ra td-grn td-mono">{{ t.credit ? fmt(t.credit) : '—' }}</td>
+                    <td class="ra">
+                      <span class="bal-pill" :class="((t.debit||0)-(t.credit||0)) > 0 ? 'bp-red' : 'bp-grn'" style="font-size:11px">
+                        {{ fmt((t.debit||0)-(t.credit||0)) }}
+                      </span>
+                    </td>
+                  </tr>
+                  <tr style="background:#F8FAFC;font-weight:700;border-top:2px solid #E4E7EC">
+                    <td colspan="5" style="padding:10px 14px;font-size:12px;color:#374151">Grand Total</td>
+                    <td class="ra td-red td-mono" style="padding:10px 14px">{{ fmt(selectedCustomer.totalDebit) }}</td>
+                    <td class="ra td-grn td-mono" style="padding:10px 14px">{{ fmt(selectedCustomer.totalCredit) }}</td>
+                    <td class="ra" style="padding:10px 14px"><span class="bal-pill" :class="selectedCustomer.totalBalance > 0 ? 'bp-red' : 'bp-grn'">{{ fmt(selectedCustomer.totalBalance) }}</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
         <div class="mdl-ft">
-          <button class="btn-cancel" @click="openPaymentModal(selectedCustomer); showViewModal = false">Add Payment</button>
-          <button class="btn-ok bok-teal" @click="showViewModal = false">Close</button>
+          <button class="btn-cancel" @click="showViewModal = false">Close</button>
+          <button class="btn-ok bok-amber" @click="openPaymentModal(selectedCustomer); showViewModal = false">+ Add Transaction</button>
         </div>
       </div>
     </div>
     </Teleport>
 
-    <!-- ══ PAYMENT MODAL ══ -->
+    <!-- ══ ADD PAYMENT / QUICK CREDIT MODAL ══ -->
     <Teleport to="body">
     <div v-if="showPayModal" class="ov" @click.self="closePayModal">
       <div class="modal modal-sm">
         <div class="mdl-hd mhd-green">
-          <div class="mhd-left"><div class="mhd-ico">💳</div><h2>Add Payment</h2></div>
+          <div class="mhd-left"><div class="mhd-ico">💳</div><h2>Record Payment</h2></div>
           <button class="mdl-close" @click="closePayModal">✕</button>
         </div>
         <div class="mdl-body" v-if="selectedCustomer">
@@ -524,17 +534,17 @@
     <div v-if="showDeleteModal" class="ov" @click.self="showDeleteModal = false">
       <div class="modal modal-xs">
         <div class="mdl-hd mhd-red">
-          <div class="mhd-left"><div class="mhd-ico">🗑️</div><h2>Delete Record</h2></div>
+          <div class="mhd-left"><div class="mhd-ico">🗑️</div><h2>Delete All Records</h2></div>
           <button class="mdl-close" @click="showDeleteModal = false">✕</button>
         </div>
         <div class="mdl-body">
-          <p style="font-size:14.5px;color:#374151;line-height:1.6">Are you sure you want to delete <strong>{{ selectedCustomer?.name }}</strong>?</p>
+          <p style="font-size:14.5px;color:#374151;line-height:1.6">Delete <strong>all {{ selectedCustomer?.transactions?.length }} transaction(s)</strong> for <strong>{{ selectedCustomer?.name }}</strong>?</p>
           <p style="font-size:13px;color:#9CA3AF;margin-top:6px">This action is permanent and cannot be undone.</p>
         </div>
         <div class="mdl-ft">
           <button class="btn-cancel" @click="showDeleteModal = false">Cancel</button>
           <button class="btn-ok bok-red" :disabled="isSubmitting" @click="deleteCustomer">
-            <span v-if="isSubmitting" class="spn"></span><span v-else>Yes, Delete</span>
+            <span v-if="isSubmitting" class="spn"></span><span v-else>Yes, Delete All</span>
           </button>
         </div>
       </div>
@@ -553,164 +563,345 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, reactive } from 'vue'
+import { ref, computed, onMounted, reactive, nextTick } from 'vue'
 
 const API_URL = 'https://script.google.com/macros/s/AKfycbxdTxeHMyfyiEFq6FH5MWYEclls2QEQwTSdKlne4LbCEknCObaHZ_bmKoJ85qRZqLQtrQ/exec'
 
 /* ── state ── */
-const customers    = ref([])
+const rawRecords   = ref([])   // all raw rows from Google Sheet
 const isLoading    = ref(true)
 const isSubmitting = ref(false)
 const activeTab    = ref('dashboard')
 
 const filterName    = ref('')
-const filterFrom    = ref('')
-const filterTo      = ref('')
 const filterBalance = ref('')
 
 const showFormModal   = ref(false)
 const showViewModal   = ref(false)
 const showPayModal    = ref(false)
 const showDeleteModal = ref(false)
-const editMode        = ref(false)
+
+// addMode: 'search' | 'new' | 'new_txn'
+const addMode         = ref('search')
 const selectedCustomer = ref(null)
+const matchedCustomer  = ref(null)  // the existing customer chosen for new_txn
 const formError = ref('')
 const payError  = ref('')
 
-const emptyForm = () => ({ id:null, name:'', alternateName:'', address:'', mobile:'', altMobile:'', date:'', description:'', billNo:'', bookNo:'', debit:0, credit:0 })
+// Duplicate detection
+const dupSearchQuery = ref('')
+const dupResults     = ref([])
+const dupSearching   = ref(false)
+const dupSearchRef   = ref(null)
+
+const emptyForm = () => ({
+  id: null, name: '', alternateName: '', address: '', mobile: '',
+  altMobile: '', date: new Date().toISOString().split('T')[0],
+  description: '', billNo: '', bookNo: '', debit: 0, credit: 0
+})
 const form = reactive(emptyForm())
 
 const payAmount = ref(0)
 const payDate   = ref(new Date().toISOString().split('T')[0])
 const payNote   = ref('')
-const toast     = reactive({ show:false, message:'', type:'success' })
+const toast     = reactive({ show: false, message: '', type: 'success' })
 
-/* ── computed (all customers, no filter) ── */
-const allDebit   = computed(() => customers.value.reduce((s, c) => s + (c.debit  || 0), 0))
-const allCredit  = computed(() => customers.value.reduce((s, c) => s + (c.credit || 0), 0))
+/* ══════════════════════════════════════════════════
+   CORE: group raw records into unique customers
+   Key: mobile number (preferred) or normalised name
+══════════════════════════════════════════════════ */
+const uniqueCustomers = computed(() => {
+  const map = new Map()
+
+  for (const r of rawRecords.value) {
+    // Build a stable key: mobile (trimmed) preferred, else UPPER name
+    const mobile = (r.mobile || '').replace(/\s+/g, '').trim()
+    const key    = mobile || (r.name || '').trim().toUpperCase()
+    if (!key) continue
+
+    if (!map.has(key)) {
+      map.set(key, {
+        key,
+        name:          (r.name || '').trim().toUpperCase(),
+        alternateName: r.alternateName || '',
+        mobile:        r.mobile || '',
+        altMobile:     r.altMobile || '',
+        address:       r.address || '',
+        transactions:  [],
+        totalDebit:    0,
+        totalCredit:   0,
+        totalBalance:  0,
+      })
+    }
+
+    const cust = map.get(key)
+    // Update contact info from newest record (preserve non-empty)
+    if (r.alternateName) cust.alternateName = r.alternateName
+    if (r.address)       cust.address       = r.address
+    if (r.altMobile)     cust.altMobile     = r.altMobile
+
+    cust.transactions.push({ ...r })
+    cust.totalDebit   += (Number(r.debit)  || 0)
+    cust.totalCredit  += (Number(r.credit) || 0)
+    cust.totalBalance  = cust.totalDebit - cust.totalCredit
+  }
+
+  return [...map.values()]
+})
+
+/* ── derived totals ── */
+const allDebit   = computed(() => uniqueCustomers.value.reduce((s, c) => s + c.totalDebit,  0))
+const allCredit  = computed(() => uniqueCustomers.value.reduce((s, c) => s + c.totalCredit, 0))
 const allBalance = computed(() => allDebit.value - allCredit.value)
-const allPending = computed(() => customers.value.filter(c => c.totalBalance > 0).length)
+const allPending = computed(() => uniqueCustomers.value.filter(c => c.totalBalance > 0).length)
 
 const pendingCustomers = computed(() =>
-  customers.value.filter(c => c.totalBalance > 0).sort((a, b) => b.totalBalance - a.totalBalance)
+  uniqueCustomers.value.filter(c => c.totalBalance > 0).sort((a, b) => b.totalBalance - a.totalBalance)
 )
 const clearedCustomers = computed(() =>
-  customers.value.filter(c => c.totalBalance <= 0)
+  uniqueCustomers.value.filter(c => c.totalBalance <= 0)
 )
 const topDues = computed(() =>
-  customers.value.filter(c => c.totalBalance > 0).sort((a, b) => b.totalBalance - a.totalBalance).slice(0, 10)
+  uniqueCustomers.value.filter(c => c.totalBalance > 0).sort((a, b) => b.totalBalance - a.totalBalance).slice(0, 10)
 )
 const collectionPct = computed(() => {
   if (!allDebit.value) return 0
   return Math.round((allCredit.value / allDebit.value) * 100)
 })
 
-/* ── computed (filtered, for Customers tab) ── */
-const filteredCustomers = computed(() => {
+/* ── filtered for customers tab ── */
+const filteredUniqueCustomers = computed(() => {
   const q = filterName.value.trim().toLowerCase()
-  return customers.value.filter(c => {
-    let mn = true
+  return uniqueCustomers.value.filter(c => {
     if (q) {
-      const name      = (c.name || '').trim().toLowerCase().replace(/\s+/g, ' ')
-      const alt       = (c.alternateName || '').trim().toLowerCase().replace(/\s+/g, ' ')
-      const nameWords = name.split(' ').filter(Boolean)
-      const altWords  = alt.split(' ').filter(Boolean)
-      const matchName = name.startsWith(q) || nameWords.some(w => w.startsWith(q))
-      const matchAlt  = alt.length > 0 && (alt.startsWith(q) || altWords.some(w => w.startsWith(q)))
-      mn = matchName || matchAlt
+      const name   = c.name.toLowerCase()
+      const mobile = (c.mobile || '').toLowerCase()
+      const alt    = (c.alternateName || '').toLowerCase()
+      if (!name.includes(q) && !mobile.includes(q) && !alt.includes(q)) return false
     }
-    const mf = !filterFrom.value || new Date(c.date) >= new Date(filterFrom.value)
-    const mt = !filterTo.value   || new Date(c.date) <= new Date(filterTo.value)
-    const mb = !filterBalance.value
-      || (filterBalance.value === 'pending' && c.totalBalance > 0)
-      || (filterBalance.value === 'cleared' && c.totalBalance <= 0)
-    return mn && mf && mt && mb
+    if (filterBalance.value === 'pending'  && c.totalBalance <= 0) return false
+    if (filterBalance.value === 'cleared'  && c.totalBalance > 0)  return false
+    return true
   })
+})
+
+/* ── new running balance preview in form ── */
+const newRunningBalance = computed(() => {
+  const prevBal = (addMode.value === 'new_txn' && matchedCustomer.value)
+    ? matchedCustomer.value.totalBalance
+    : 0
+  return prevBal + (form.debit || 0) - (form.credit || 0)
 })
 
 /* ── helpers ── */
 const AV_COLORS = ['#6366F1','#8B5CF6','#EC4899','#F59E0B','#10B981','#3B82F6','#EF4444','#14B8A6','#F97316']
 const avColor  = name => AV_COLORS[(name ? name.charCodeAt(0) : 0) % AV_COLORS.length]
 const fmt      = n => Number(n || 0).toLocaleString('en-IN')
-const initials = name => name ? name.split(' ').slice(0,2).map(w => w[0]).join('').toUpperCase() : '?'
+const initials = name => name ? name.split(' ').slice(0, 2).map(w => w[0]).join('').toUpperCase() : '?'
 const fmtDate  = d => {
   if (!d) return '—'
   const dt = new Date(d)
-  return isNaN(dt) ? d : dt.toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'numeric' })
+  return isNaN(dt) ? d : dt.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })
 }
 function showToast(msg, type = 'success') {
-  Object.assign(toast, { show:true, message:msg, type })
+  Object.assign(toast, { show: true, message: msg, type })
   setTimeout(() => { toast.show = false }, 3000)
 }
-const clearFilters = () => { filterName.value = filterFrom.value = filterTo.value = filterBalance.value = '' }
+const clearFilters = () => { filterName.value = ''; filterBalance.value = '' }
 
 /* ── api ── */
 async function loadCustomers() {
   isLoading.value = true
   try {
-    const res  = await fetch(API_URL, { method:'POST', body: JSON.stringify({ action:'getAll' }) })
+    const res  = await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: 'getAll' }) })
     const data = await res.json()
-    const rows = (data.records || []).map(r => ({
+    rawRecords.value = (data.records || []).map(r => ({
       ...r,
-      debit: Number(r.debit) || 0,
+      debit:  Number(r.debit)  || 0,
       credit: Number(r.credit) || 0,
-      totalBalance: (Number(r.debit) || 0) - (Number(r.credit) || 0)
     }))
-    const seen = new Set()
-    customers.value = rows.filter(r => {
-      const key = r.id != null ? String(r.id) : (r.name + '|' + r.date)
-      if (seen.has(key)) return false
-      seen.add(key)
-      return true
-    })
   } catch { showToast('Failed to load data', 'error') }
   finally { isLoading.value = false }
 }
 
-/* ── modal openers ── */
-const openAddModal     = ()  => { editMode.value = false; Object.assign(form, emptyForm()); formError.value = ''; showFormModal.value = true }
-const openEditModal    = c   => { editMode.value = true;  Object.assign(form, { ...c });   formError.value = ''; showFormModal.value = true }
-const openViewModal    = c   => { selectedCustomer.value = c; showViewModal.value = true }
-const openPaymentModal = c   => { selectedCustomer.value = c; payAmount.value = 0; payDate.value = new Date().toISOString().split('T')[0]; payNote.value = ''; payError.value = ''; showPayModal.value = true }
-const confirmDelete    = c   => { selectedCustomer.value = c; showDeleteModal.value = true }
-const closeFormModal   = ()  => { showFormModal.value = false }
-const closePayModal    = ()  => { showPayModal.value  = false }
+/* ══ Duplicate detection logic ══ */
+function onDupSearch() {
+  const q = dupSearchQuery.value.trim().toLowerCase()
+  if (q.length < 2) { dupResults.value = []; return }
 
-/* ── crud ── */
+  dupSearching.value = true
+  dupResults.value = uniqueCustomers.value.filter(c => {
+    const name   = c.name.toLowerCase()
+    const mobile = (c.mobile || '').replace(/\s+/g, '')
+    const alt    = (c.alternateName || '').toLowerCase()
+    return name.includes(q) || mobile.includes(q.replace(/\s+/g, '')) || alt.includes(q)
+  })
+  dupSearching.value = false
+}
+
+function onMobileInput() {
+  // Auto-trigger duplicate check when mobile is typed in the 'new' form
+  const q = (form.mobile || '').replace(/\s+/g, '').trim()
+  if (q.length >= 6) {
+    const match = uniqueCustomers.value.find(c =>
+      (c.mobile || '').replace(/\s+/g, '') === q
+    )
+    if (match) {
+      // Automatically switch to new_txn mode for this customer
+      selectExistingCustomer(match)
+    }
+  }
+}
+
+function selectExistingCustomer(customer) {
+  matchedCustomer.value = customer
+  addMode.value = 'new_txn'
+  dupSearchQuery.value = ''
+  dupResults.value = []
+  // Pre-fill transaction form
+  Object.assign(form, emptyForm())
+  form.date = new Date().toISOString().split('T')[0]
+}
+
+function prefillFormFromSearch() {
+  addMode.value = 'new'
+  // Try to fill mobile / name from search query
+  const q = dupSearchQuery.value.trim()
+  if (/^\d+$/.test(q)) form.mobile = q
+  else form.name = q.toUpperCase()
+  dupSearchQuery.value = ''
+  dupResults.value = []
+}
+
+/* ── modal openers ── */
+function openAddModal() {
+  addMode.value = 'search'
+  matchedCustomer.value = null
+  dupSearchQuery.value = ''
+  dupResults.value = []
+  Object.assign(form, emptyForm())
+  formError.value = ''
+  showFormModal.value = true
+  nextTick(() => dupSearchRef.value?.focus())
+}
+
+function openViewModal(c) {
+  selectedCustomer.value = c
+  showViewModal.value = true
+}
+
+function openPaymentModal(c) {
+  selectedCustomer.value = c
+  payAmount.value = 0
+  payDate.value   = new Date().toISOString().split('T')[0]
+  payNote.value   = ''
+  payError.value  = ''
+  showPayModal.value = true
+}
+
+function confirmDelete(c) {
+  selectedCustomer.value = c
+  showDeleteModal.value = true
+}
+
+const closeFormModal = () => { showFormModal.value = false }
+const closePayModal  = () => { showPayModal.value  = false }
+
+/* ── CRUD ── */
 async function submitForm() {
-  if (!form.name.trim())   { formError.value = 'Name is required'; return }
-  if (!form.mobile.trim()) { formError.value = 'Mobile is required'; return }
-  if (!form.debit)         { formError.value = 'Total bill is required'; return }
-  formError.value = ''; isSubmitting.value = true
+  if (addMode.value === 'new') {
+    if (!form.name.trim())   { formError.value = 'Name is required';        return }
+    if (!form.mobile.trim()) { formError.value = 'Mobile is required';      return }
+    if (!form.debit)         { formError.value = 'Total bill is required';  return }
+  }
+  if (addMode.value === 'new_txn') {
+    if (!form.debit) { formError.value = 'Total bill is required'; return }
+  }
+  formError.value  = ''
+  isSubmitting.value = true
+
   try {
-    const res  = await fetch(API_URL, { method:'POST', body: JSON.stringify({ action: editMode.value ? 'update' : 'add', record: { ...form, name: form.name.trim().toUpperCase(), totalBalance: (form.debit||0)-(form.credit||0) } }) })
+    let payload
+
+    if (addMode.value === 'new') {
+      // Brand new customer + first transaction
+      payload = {
+        action: 'add',
+        record: {
+          ...form,
+          name:         form.name.trim().toUpperCase(),
+          totalBalance: (form.debit || 0) - (form.credit || 0),
+        }
+      }
+    } else {
+      // New transaction for existing customer — keep same mobile/name
+      payload = {
+        action: 'add',
+        record: {
+          name:          matchedCustomer.value.name,
+          alternateName: matchedCustomer.value.alternateName,
+          mobile:        matchedCustomer.value.mobile,
+          altMobile:     matchedCustomer.value.altMobile,
+          address:       matchedCustomer.value.address,
+          date:          form.date,
+          billNo:        form.billNo,
+          bookNo:        form.bookNo,
+          description:   form.description,
+          debit:         form.debit  || 0,
+          credit:        form.credit || 0,
+          totalBalance:  (form.debit || 0) - (form.credit || 0),
+        }
+      }
+    }
+
+    const res  = await fetch(API_URL, { method: 'POST', body: JSON.stringify(payload) })
     const data = await res.json()
-    if (data.success) { showToast(editMode.value ? 'Updated!' : 'Customer added!'); closeFormModal(); await loadCustomers() }
-    else formError.value = data.error || 'Something went wrong'
+
+    if (data.success) {
+      showToast(addMode.value === 'new_txn' ? 'Transaction added!' : 'Customer added!')
+      closeFormModal()
+      await loadCustomers()
+    } else {
+      formError.value = data.error || 'Something went wrong'
+    }
   } catch { formError.value = 'Network error' }
-  finally { isSubmitting.value = false }
+  finally  { isSubmitting.value = false }
 }
 
 async function submitPayment() {
   if (!payAmount.value || payAmount.value <= 0) { payError.value = 'Enter a valid amount'; return }
-  payError.value = ''; isSubmitting.value = true
+  payError.value     = ''
+  isSubmitting.value = true
   try {
-    const res  = await fetch(API_URL, { method:'POST', body: JSON.stringify({ action:'addPayment', record: { id: selectedCustomer.value.id, amount: payAmount.value, date: payDate.value, note: payNote.value } }) })
+    const res  = await fetch(API_URL, { method: 'POST', body: JSON.stringify({
+      action: 'addPayment',
+      record: {
+        id:     selectedCustomer.value.transactions[0]?.id, // use first txn id as reference
+        amount: payAmount.value,
+        date:   payDate.value,
+        note:   payNote.value,
+        mobile: selectedCustomer.value.mobile,
+        name:   selectedCustomer.value.name,
+      }
+    }) })
     const data = await res.json()
     if (data.success) { showToast('Payment recorded!'); closePayModal(); await loadCustomers() }
     else payError.value = data.error || 'Something went wrong'
   } catch { payError.value = 'Network error' }
-  finally { isSubmitting.value = false }
+  finally  { isSubmitting.value = false }
 }
 
 async function deleteCustomer() {
   isSubmitting.value = true
   try {
-    const res  = await fetch(API_URL, { method:'POST', body: JSON.stringify({ action:'delete', id: selectedCustomer.value.id }) })
+    // Delete all transaction rows for this customer
+    const ids = selectedCustomer.value.transactions.map(t => t.id).filter(Boolean)
+    const res  = await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: 'deleteMany', ids }) })
     const data = await res.json()
-    if (data.success) { showToast('Record deleted'); showDeleteModal.value = false; await loadCustomers() }
+    if (data.success) { showToast('All records deleted'); showDeleteModal.value = false; await loadCustomers() }
+    else showToast('Delete failed', 'error')
   } catch { showToast('Delete failed', 'error') }
-  finally { isSubmitting.value = false }
+  finally  { isSubmitting.value = false }
 }
 
 onMounted(loadCustomers)
@@ -763,13 +954,10 @@ html, body, #app { height: 100%; font-family: 'Inter', system-ui, sans-serif; ba
 /* ── Filter bar ── */
 .filter-bar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 14px 24px; background: #FFFFFF; border-bottom: 1px solid #E4E7EC; margin-top: 16px; }
 .search-box { position: relative; flex: 1; min-width: 180px; }
-.search-ico { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: #9CA3AF; }
+.search-ico { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: #9CA3AF; pointer-events: none; }
 .search-inp { width: 100%; padding: 9px 12px 9px 33px; background: #F9FAFB; border: 1px solid #E4E7EC; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 13px; color: #1A1D23; outline: none; transition: border-color .15s; }
 .search-inp:focus { border-color: #2563EB; background: #fff; }
 .search-inp::placeholder { color: #D1D5DB; }
-.date-group { display: flex; align-items: center; gap: 8px; background: #F9FAFB; border: 1px solid #E4E7EC; border-radius: 8px; padding: 7px 12px; }
-.date-arr   { color: #9CA3AF; font-size: 12px; }
-.date-inp   { border: none; background: transparent; font-family: 'Inter', sans-serif; font-size: 13px; color: #374151; outline: none; }
 .f-select   { padding: 9px 12px; background: #F9FAFB; border: 1px solid #E4E7EC; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 13px; color: #374151; outline: none; cursor: pointer; }
 .btn-clear  { padding: 9px 14px; background: transparent; border: 1px solid #E4E7EC; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 13px; color: #9CA3AF; cursor: pointer; transition: all .15s; }
 .btn-clear:hover { border-color: #DC2626; color: #DC2626; }
@@ -820,6 +1008,31 @@ html, body, #app { height: 100%; font-family: 'Inter', system-ui, sans-serif; ba
 .btn-pay-now { padding: 5px 12px; background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 6px; color: #16A34A; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; cursor: pointer; transition: all .15s; white-space: nowrap; }
 .btn-pay-now:hover { background: #16A34A; color: #fff; }
 
+/* ── Transaction badge ── */
+.txn-badge { background: #EFF6FF; color: #2563EB; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 12px; white-space: nowrap; }
+
+/* ── Duplicate search UI ── */
+.dup-search-wrap { background: #F8FAFC; border: 1.5px solid #E4E7EC; border-radius: 10px; padding: 14px 16px; margin-bottom: 4px; }
+.dup-search-label { font-size: 11px; font-weight: 600; color: #9CA3AF; text-transform: uppercase; letter-spacing: .6px; margin-bottom: 10px; }
+.dup-search-row { display: flex; gap: 10px; }
+.dup-dropdown { margin-top: 10px; border: 1px solid #E4E7EC; border-radius: 10px; overflow: hidden; background: #fff; box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+.dup-dropdown-label { padding: 8px 14px; font-size: 11px; font-weight: 600; color: #6B7280; background: #F8FAFC; border-bottom: 1px solid #F3F4F6; text-transform: uppercase; letter-spacing: .5px; }
+.dup-result-item { display: flex; align-items: center; gap: 12px; padding: 12px 14px; cursor: pointer; transition: background .12s; border-bottom: 1px solid #F3F4F6; }
+.dup-result-item:last-of-type { border-bottom: none; }
+.dup-result-item:hover { background: #EFF6FF; }
+.dup-result-info { flex: 1; }
+.dup-result-info strong { display: block; font-size: 13.5px; color: #111827; font-weight: 600; }
+.dup-result-info span  { font-size: 12px; color: #9CA3AF; margin-top: 2px; display: block; }
+.dup-or-new { display: flex; align-items: center; gap: 8px; padding: 10px 14px; font-size: 12.5px; color: #2563EB; font-weight: 600; cursor: pointer; background: #F8FAFC; border-top: 1px solid #E4E7EC; transition: background .12s; }
+.dup-or-new:hover { background: #EFF6FF; }
+.dup-no-result { font-size: 13px; color: #9CA3AF; margin-top: 10px; padding: 8px 12px; background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 8px; }
+.dup-new-link { color: #2563EB; font-weight: 600; cursor: pointer; text-decoration: underline; }
+
+/* ── Existing transaction summary in modal ── */
+.existing-txn-summary { margin: 14px 0 0; border: 1.5px solid #FDE68A; border-radius: 10px; overflow: hidden; }
+.ets-header { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: #FFFBEB; border-bottom: 1px solid #FDE68A; font-size: 12px; font-weight: 600; color: #92400E; }
+.ets-table-wrap { overflow-x: auto; max-height: 200px; overflow-y: auto; }
+
 /* ── Reports ── */
 .report-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; padding: 20px 24px 0; }
 .report-card { border-radius: 12px; padding: 20px 22px; display: flex; flex-direction: column; gap: 4px; border: 1px solid transparent; }
@@ -839,7 +1052,8 @@ html, body, #app { height: 100%; font-family: 'Inter', system-ui, sans-serif; ba
 .ov { position: fixed; inset: 0; background: rgba(0,0,0,.45); backdrop-filter: blur(3px); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 20px; }
 .modal { background: #FFFFFF; border-radius: 14px; border: 1px solid #E4E7EC; box-shadow: 0 20px 60px rgba(0,0,0,.18); width: 100%; display: flex; flex-direction: column; max-height: 92vh; overflow: hidden; animation: mIn .22s cubic-bezier(.22,1,.36,1); }
 @keyframes mIn { from{opacity:0;transform:translateY(14px) scale(.97)} to{opacity:1;transform:none} }
-.modal-xs { max-width:380px; } .modal-sm { max-width:440px; } .modal-md { max-width:560px; } .modal-lg { max-width:680px; }
+.modal-xs { max-width:380px; } .modal-sm { max-width:440px; } .modal-md { max-width:560px; } .modal-lg { max-width: 91%;
+    min-height: 90vh; }
 .mdl-hd { display:flex; align-items:center; justify-content:space-between; padding:18px 22px; flex-shrink:0; }
 .mhd-blue  { background:#EFF6FF; border-bottom:2px solid #BFDBFE; }
 .mhd-amber { background:#FFFBEB; border-bottom:2px solid #FDE68A; }
@@ -880,11 +1094,6 @@ html, body, #app { height: 100%; font-family: 'Inter', system-ui, sans-serif; ba
 .v-hero-text { flex:1; }
 .v-name { font-size:16px; font-weight:700; color:#111827; }
 .v-rel  { font-size:12.5px; color:#9CA3AF; margin-top:2px; }
-.v-grid { display:grid; grid-template-columns:1fr 1fr; margin-bottom:16px; }
-.v-row  { display:flex; flex-direction:column; gap:2px; padding:10px 0; border-bottom:1px solid #F3F4F6; }
-.v-full { grid-column:1/-1; }
-.v-row span   { font-size:10.5px; color:#D1D5DB; text-transform:uppercase; letter-spacing:.4px; }
-.v-row strong { font-size:13.5px; font-weight:500; color:#374151; }
 .bill-strip { display:flex; align-items:center; gap:10px; background:#F8FAFC; border:1px solid #E4E7EC; border-radius:9px; padding:14px 18px; }
 .bs-col   { display:flex; flex-direction:column; gap:3px; flex:1; text-align:center; }
 .bs-label { font-size:10.5px; color:#9CA3AF; text-transform:uppercase; letter-spacing:.5px; }
