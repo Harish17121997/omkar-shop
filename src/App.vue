@@ -153,6 +153,12 @@
                       <button class="ab ab-d" @click="confirmDelete(c)" title="Delete All Records">
                         <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 4h9M5 4V2.5h3V4M5.5 5.5v4M7.5 5.5v4M3 4l.5 6.5h6L10 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
                       </button>
+                      <button v-if="c.totalBalance > 0" class="ab ab-wa" @click="sendWhatsAppReminder(c)" title="Send WhatsApp Reminder">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.1 1.51 5.83L.057 23.273a.5.5 0 0 0 .67.593l5.596-1.469A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.812 9.812 0 0 1-5.001-1.369l-.358-.214-3.32.872.888-3.24-.235-.374A9.818 9.818 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
+                          </svg>
+                      </button>
                     </div>
                   </td>
                 </tr>
@@ -181,7 +187,7 @@
           <div v-if="pendingCustomers.length === 0" class="state-center" style="padding:40px"><p style="color:#16A34A;font-weight:600">🎉 All accounts are cleared!</p></div>
           <div v-else class="tbl-wrap">
             <table class="tbl">
-              <thead><tr><th>#</th><th>Customer</th><th>Mobile</th><th>Txns</th><th class="ra">Total Bill ₹</th><th class="ra">Paid ₹</th><th class="ra">Due ₹</th><th>Action</th></tr></thead>
+              <thead><tr><th>#</th><th>Customer</th><th>Mobile</th><th>Txns</th><th class="ra">Total Bill ₹</th><th class="ra">Paid ₹</th><th class="ra">Due ₹</th><th>Action</th><th>WhatsApp</th></tr></thead>
               <tbody>
                 <tr v-for="(c, i) in pendingCustomers" :key="c.mobile || c.name">
                   <td class="td-sl">{{ i + 1 }}</td>
@@ -192,6 +198,12 @@
                   <td class="ra td-mono td-grn">{{ fmt(c.totalCredit) }}</td>
                   <td class="ra"><span class="bal-pill bp-red">{{ fmt(c.totalBalance) }}</span></td>
                   <td><button class="btn-pay-now" @click="openPaymentModal(c)">+ Transaction</button></td>
+                  <td><button class="ab ab-wa" @click="sendWhatsAppReminder(c)" title="Send Reminder">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.1 1.51 5.83L.057 23.273a.5.5 0 0 0 .67.593l5.596-1.469A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.812 9.812 0 0 1-5.001-1.369l-.358-.214-3.32.872.888-3.24-.235-.374A9.818 9.818 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
+                      </svg></button>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -902,6 +914,22 @@ async function deleteCustomer() {
     else showToast('Delete failed', 'error')
   } catch { showToast('Delete failed', 'error') }
   finally  { isSubmitting.value = false }
+}
+function sendWhatsAppReminder(c) {
+  const bal = fmt(c.totalBalance)
+  const msg =
+    `Namaskar ${c.name} Ji 🙏\n\n` +
+    `Ye Shree Renuka SBT Management ki taraf se ek vinay hai.\n\n` +
+    `Aapka account mein *₹${bal}* outstanding balance pending hai.\n\n` +
+    `Kripya jaldi se payment karein.\n\n` +
+    `Dhanyawad 🙏\n— Shree Renuka Team`
+
+  const mobile = (c.mobile || '').replace(/\D/g, '')
+  const url = mobile
+    ? `https://wa.me/91${mobile}?text=${encodeURIComponent(msg)}`
+    : `https://wa.me/?text=${encodeURIComponent(msg)}`
+
+  window.open(url, '_blank')
 }
 
 onMounted(loadCustomers)
